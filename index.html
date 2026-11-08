@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+    <html lang="id">
+        <head>
+            <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <meta name="description" content="Aplikasi pembelajaran Dasar-Dasar Program Keahlian TJKT SMK Negeri 1 Cibinong.">
+                        <meta name="theme-color" content="#0b2a52">
+                            <meta name="color-scheme" content="light dark">
+     <title>TECHNOVA WEB | SMKN 1 Cibinong</title>
+     <link rel="stylesheet" href="styles.css">
+        </head>
+
+        <body>
+            <div class="app-root">
+
+    <!-- ==============================================================
+    LOGIN VIEW
+     ============================================================== -->
+                <section id="loginScreen" class="login-screen">
+                        <div class="security-status-bar" aria-hidden="true"></div>
+                        <div class="login-orb one"></div>
+                        <div class="login-orb two"></div>
+                        <div class="login-card">
+            <div class="login-brand">
+            <div>
+                <h1>TECHNOVA<br>SMKN 1 Cibinong</h1>
+                <p> Selamat datang di TECHNOVA, Platform pembelajaran digital untuk mengembangkan pengetahuan dan keterampilan di bidang teknologi komputer dan jaringan.</p>
+                <div class="login-points">
+                    <div class="login-point"><span>✓</span> Materi hardware & software lengkap </div>
+                          <div class="login-point"><span>✓</span> Kuis interaktif untuk latihan </div>
+                                 <div class="login-point"><span>✓</span> Mudah untuk di pahami dan simple </div>
+                                        <div class="login-point"><span>✓</span> Program dasar Teknik Komputer dan Jaringan </div>
+            </div>
+                   </div>
+                      <small style="color:rgba(255,255,255,.52);font-size:11px;">SMK Negeri 1 Cibinong </small>
+              </div>
+                <div class="login-form-wrap">
+                        <p class="eyebrow"> Web Pembelajaran </p>
+                        <h2>Selamat Datang 👋</h2>
+                <p class="muted">Masuk dengan akun belajar untuk melanjutkan pembelajaran kamu.</p>
+                        <form id="loginForm">
+                            <div class="form-group">
+                                <label class="form-label" for="username">Username</label>
+                                <div class="input-shell">
+                                    <span class="input-icon">@</span>
+                                    <input id="username" autocomplete="username" placeholder="Masukkan username" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="password">Password</label>
+                                <div class="input-shell">
+                                    <span class="input-icon">●</span>
+                                    <input id="password" type="password" autocomplete="current-password" placeholder="Masukkan password" required>
+                                    <button type="button" class="password-toggle" id="togglePassword">Lihat</button>
+                                </div>
+                            </div>
+                            <div id="loginError" class="login-error"></div>
+                            <button class="login-submit" type="submit"> Login </button>
+                        </form>
+                        <div class="login-hint"><strong>Catatan</strong> masukan username dan password dengan benar. </div>
+                        <div class="login-security"><span class="security-dot"></span><span>Protected student portal • Local session security enabled</span></div>
+                        <div style="margin-top:10px;display:flex;justify-content:space-between;gap:10px;color:#94a3b8;font-size:10px;"><span>SECURE LOCAL SESSION</span><span>v2.0 • TJKT</span></div>
+                    </div>
+                </div>
+            </section>
+
+<!-- ==============================================================
+     MAIN APPLICATION
+     ============================================================== -->
+<section id="appShell" class="app-shell hidden">
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-brand">
+            <div class="sidebar-logo">TJ</div>
+            <div>
+                <strong>TJKT Learning Hub</strong>
+                <small>SMKN 1 Cibinong</small>
+            </div>
+         </div>
+            <div class="sidebar-section-title">Menu Utama</div>
+                <nav class="nav-list" id="mainNav">
+                    <button class="nav-btn active" data-page="dashboard"><span class="nav-icon">⌂</span>Dashboard</button>
+                    <button class="nav-btn" data-page="materials"><span class="nav-icon">▤</span>Materi TJKT</button>
+                    <button class="nav-btn" data-page="hardware"><span class="nav-icon">▣</span>Hardware</button>
+                    <button class="nav-btn" data-page="software"><span class="nav-icon">▧</span>Software</button>
+                    <button class="nav-btn" data-page="network"><span class="nav-icon">⌁</span>Networking Dasar</button>
+                    <button class="nav-btn" data-page="quiz"><span class="nav-icon">?</span>Kuis</button>
+                    <button class="nav-btn" data-page="glossary"><span class="nav-icon">A</span>Glosarium</button>
+                    <button class="nav-btn" data-page="progress"><span class="nav-icon">◔</span>Progress Belajar</button>
+        </nav>
+        <div class="sidebar-section-title">Informasi</div>
+        <nav class="nav-list">
+            <button class="nav-btn" data-page="about"><span class="nav-icon">i</span>Tentang Sekolah</button>
+            <button class="nav-btn" id="logoutBtn"><span class="nav-icon">↪</span>Keluar</button>
+        </nav>
+        <div class="sidebar-footer">
+            <p><strong>Fokus:</strong> Dasar-Dasar Program Keahlian Teknik Komputer dan Telekomunikasi.</p>
+        </div>
+    </aside>
+
+    <div class="main-shell">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="mobile-menu" id="mobileMenu">☰</button>
+                <div class="search-box">
+                    <span class="search-icon">⌕</span>
+                    <input id="globalSearch" placeholder="Cari materi, istilah, hardware...">
+                </div>
+            </div>
+            <div class="topbar-actions">
+                <button class="icon-btn" id="themeToggle" title="Mode terang/gelap">☾</button>
+                <button class="icon-btn" id="infoBtn" title="Informasi aplikasi">i</button>
+                <div class="user-chip">
+                    <div class="avatar">ST</div>
+                    <div><strong>Siswa TJKT</strong><small>SMKN 1 Cibinong</small></div>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <!-- DASHBOARD PAGE -->
+            <section id="page-dashboard" class="page active">
+                <div class="hero">
+                    <div class="hero-content">
+                        <span class="badge">SMK NEGERI 1 CIBINONG • TJKT</span>
+                        <h1>Belajar TJKT dengan terarah dan menyenangkan.</h1>
+                        <p>Pelajari dasar komputer, hardware, software, sistem operasi, jaringan, keamanan dasar, dan konsep troubleshooting melalui materi ringkas namun mendalam.</p>
+                        <div class="hero-actions">
+                            <button class="btn primary" data-go="materials">Mulai Belajar</button>
+                            <button class="btn soft" data-go="quiz">Kerjakan Kuis</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-4" style="margin-bottom:20px;">
+                    <div class="card stat-card"><div><div class="stat-label">Modul Tersedia</div><div class="stat-value">8</div><div class="stat-note">Materi inti TJKT</div></div><div class="stat-icon">▤</div></div>
+                    <div class="card stat-card"><div><div class="stat-label">Istilah</div><div class="stat-value">30+</div><div class="stat-note">Glosarium teknis</div></div><div class="stat-icon">A</div></div>
+                    <div class="card stat-card"><div><div class="stat-label">Soal Kuis</div><div class="stat-value">10</div><div class="stat-note">Latihan konsep</div></div><div class="stat-icon">?</div></div>
+                    <div class="card stat-card"><div><div class="stat-label">Progress</div><div class="stat-value" id="dashboardProgress">0%</div><div class="stat-note">Materi ditandai selesai</div></div><div class="stat-icon">◔</div></div>
+                </div>
+                <div class="grid grid-2">
+                    <div class="card card-pad">
+                        <h3 class="section-title">Lanjutkan Belajar</h3>
+                        <p class="section-subtitle">Pilih materi yang ingin kamu pelajari.</p>
+                        <div class="quick-card" style="padding:0;box-shadow:none;border:0;">
+                            <h3>Dasar-Dasar Komputer</h3>
+                            <p>Komponen komputer, input-process-output, CPU, RAM, storage, dan peripheral.</p>
+                            <div class="progress-track"><div id="dashCourseBar" class="progress-bar" style="width:0%"></div></div>
+                            <div class="quick-link" data-page-link="hardware"><span>Buka materi hardware</span><span>→</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-pad">
+                        <h3 class="section-title">Aktivitas Belajar</h3>
+                        <p class="section-subtitle">Ringkasan aktivitas dari sesi kamu.</p>
+                        <div class="activity-list">
+                            <div class="activity-item"><div class="activity-icon">01</div><div><strong>Materi hardware</strong><span>Komponen fisik komputer</span></div><span class="badge blue">Inti</span></div>
+                            <div class="activity-item"><div class="activity-icon">02</div><div><strong>Materi software</strong><span>OS, aplikasi, driver</span></div><span class="badge green">Dasar</span></div>
+                            <div class="activity-item"><div class="activity-icon">03</div><div><strong>Networking</strong><span>LAN, IP, perangkat jaringan</span></div><span class="badge orange">Lanjutan</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MATERIALS PAGE -->
+            <section id="page-materials" class="page">
+                <div class="page-heading">
+                    <div><p class="eyebrow">Kurikulum TJKT</p><h2>Materi Dasar Program Keahlian</h2><p>Susunan materi untuk membangun fondasi teknis sebelum masuk praktik yang lebih kompleks.</p></div>
+                </div>
+                <div class="module-grid" id="moduleGrid">
+                    <article class="card module-card" data-key="hardware"><div class="module-number">01</div><h3>Dasar Hardware</h3><p>Mengenal CPU, motherboard, RAM, storage, PSU, GPU, perangkat input-output, dan peripheral.</p><div class="module-meta"><span>± 25 menit</span><button class="btn soft" data-page-link="hardware">Pelajari →</button></div></article>
+                            <article class="card module-card" data-key="software"><div class="module-number">02</div><h3>Dasar Software</h3><p>Memahami software sistem, aplikasi, driver, firmware, utilitas, dan hubungan software dengan hardware.</p><div class="module-meta"><span>± 20 menit</span><button class="btn soft" data-page-link="software">Pelajari →</button></div></article>
+                                <article class="card module-card" data-key="os"><div class="module-number">03</div><h3>Sistem Operasi</h3><p>Fungsi OS, proses booting, file system, user account, service, permission, dan maintenance dasar.</p><div class="module-meta"><span>± 20 menit</span><button class="btn soft" data-page-link="software">Pelajari →</button></div></article>
+                                    <article class="card module-card" data-key="network"><div class="module-number">04</div><h3>Networking Dasar</h3><p>LAN, WAN, IP address, MAC address, switch, router, access point, kabel, dan topologi jaringan.</p><div class="module-meta"><span>± 30 menit</span><button class="btn soft" data-page-link="network">Pelajari →</button></div></article>
+                                <article class="card module-card" data-key="security"><div class="module-number">05</div><h3>Keamanan Dasar</h3><p>Password kuat, update, backup, malware, phishing, firewall, dan kebiasaan aman saat menggunakan jaringan.</p><div class="module-meta"><span>± 18 menit</span><button class="btn soft" data-page-link="software">Pelajari →</button></div></article>
+                        <article class="card module-card" data-key="troubleshoot"><div class="module-number">06</div><h3>Troubleshooting</h3><p>Metode identifikasi masalah, pemeriksaan komponen, isolasi penyebab, dan dokumentasi perbaikan.</p><div class="module-meta"><span>± 22 menit</span><button class="btn soft" data-page-link="hardware">Pelajari →</button></div></article>
+                 </div>
+                </section>
+
+            <!-- HARDWARE PAGE -->
+            <section id="page-hardware" class="page">
+                <div class="page-heading"><div><p class="eyebrow">Modul 01</p><h2>Teknik Komputer: Hardware</h2><p>Memahami bagian fisik komputer, fungsi, karakteristik, dan cara perawatan dasarnya.</p></div><button class="btn primary" id="completeHardware">Tandai Selesai</button></div>
+                <div class="material-layout">
+                    <aside class="card material-sidebar">
+                        <button class="material-tab active" data-target="hw-pengertian">Pengertian Hardware</button>
+                        <button class="material-tab" data-target="hw-motherboard">Motherboard</button>
+                        <button class="material-tab" data-target="hw-cpu">CPU / Processor</button>
+                        <button class="material-tab" data-target="hw-ram">RAM</button>
+                        <button class="material-tab" data-target="hw-storage">Storage</button>
+                        <button class="material-tab" data-target="hw-gpu">GPU & Display</button>
+                        <button class="material-tab" data-target="hw-psu">PSU</button>
+                        <button class="material-tab" data-target="hw-io">Input & Output</button>
+                        <button class="material-tab" data-target="hw-care">Perawatan</button>
+                    </aside>
+                    <div class="material-content">
+                        <div class="material-hero"><span class="badge blue">HARDWARE</span><h3>Kenali komputer dari komponen fisiknya.</h3><p>Hardware adalah bagian fisik yang dapat dilihat atau disentuh. Setiap komponen bekerja bersama untuk menerima input, memproses data, menyimpan data, dan menghasilkan output.</p></div>
+                        <article id="hw-pengertian" class="card topic-section"><h4>1. Pengertian Hardware</h4><p>Hardware atau perangkat keras adalah seluruh komponen fisik pada sistem komputer. Hardware tidak dapat menjalankan tugas secara mandiri tanpa software yang memberikan instruksi.</p><p>Dalam konsep sederhana, komputer menerima <strong>input</strong>, melakukan <strong>process</strong>, menyimpan data bila diperlukan, lalu menghasilkan <strong>output</strong>.</p><div class="note-box"><strong>Ingat:</strong> hardware = benda fisik; software = kumpulan instruksi/program yang dijalankan oleh komputer.</div></article>
+                        <article id="hw-motherboard" class="card topic-section"><h4>2. Motherboard</h4><p>Motherboard adalah papan sirkuit utama yang menjadi tempat berbagai komponen penting terhubung dan berkomunikasi.</p><ul><li>Menjadi tempat pemasangan CPU dan RAM.</li><li>Menyediakan slot ekspansi seperti PCI Express.</li><li>Menyediakan konektor storage, USB, audio, jaringan, dan power.</li><li>Mengatur jalur komunikasi antarkomponen melalui chipset dan controller.</li></ul><table class="info-table"><tr><th>Bagian</th><th>Fungsi</th></tr><tr><td>CPU Socket</td><td>Tempat memasang processor yang kompatibel.</td></tr><tr><td>DIMM Slot</td><td>Tempat memasang modul RAM.</td></tr><tr><td>PCIe Slot</td><td>Untuk perangkat ekspansi seperti GPU atau kartu tambahan.</td></tr><tr><td>SATA / M.2</td><td>Antarmuka untuk perangkat penyimpanan tertentu.</td></tr></table></article>
+                        <article id="hw-cpu" class="card topic-section"><h4>3. CPU / Processor</h4><p>CPU atau Central Processing Unit menjalankan instruksi dan melakukan operasi logika maupun aritmetika. CPU sering disebut sebagai salah satu pusat pemrosesan komputer.</p><ul><li><strong>Core:</strong> unit pemrosesan di dalam processor.</li><li><strong>Clock speed:</strong> frekuensi kerja yang umumnya dinyatakan dalam GHz.</li><li><strong>Cache:</strong> memori berkecepatan tinggi untuk data/instruksi yang sering digunakan.</li><li><strong>Instruction set:</strong> kumpulan instruksi yang dapat dipahami oleh processor.</li></ul></article>
+                        <article id="hw-ram" class="card topic-section"><h4>4. RAM</h4><p>RAM atau Random Access Memory adalah memori kerja sementara yang digunakan sistem untuk menyimpan data dan instruksi yang sedang aktif.</p><p>RAM bersifat volatile, sehingga data di dalamnya hilang ketika daya listrik terputus. Kapasitas RAM yang lebih besar dapat membantu menjalankan lebih banyak aplikasi secara bersamaan, tetapi performa juga dipengaruhi oleh processor, storage, dan software.</p></article>
+                        <article id="hw-storage" class="card topic-section"><h4>5. Storage: HDD dan SSD</h4><p>Storage digunakan untuk menyimpan sistem operasi, aplikasi, dan file secara relatif permanen.</p><table class="info-table"><tr><th>Aspek</th><th>HDD</th><th>SSD</th></tr><tr><td>Teknologi</td><td>Piringan magnetik dan head mekanis.</td><td>Memori flash tanpa bagian mekanis bergerak.</td></tr><tr><td>Kecepatan</td><td>Umumnya lebih rendah.</td><td>Umumnya lebih tinggi.</td></tr><tr><td>Ketahanan guncangan</td><td>Lebih sensitif terhadap benturan saat bekerja.</td><td>Lebih tahan terhadap guncangan mekanis.</td></tr><tr><td>Contoh penggunaan</td><td>Arsip berkapasitas besar.</td><td>OS, aplikasi, laptop, dan workstation.</td></tr></table></article>
+                        <article id="hw-gpu" class="card topic-section"><h4>6. GPU & Display</h4><p>GPU atau Graphics Processing Unit menangani pemrosesan grafis. GPU dapat terintegrasi dengan processor atau berupa kartu grafis terpisah.</p><ul><li>Menampilkan antarmuka desktop dan aplikasi.</li><li>Mendukung pengolahan grafis 2D/3D.</li><li>Dapat digunakan untuk pekerjaan komputasi paralel tertentu.</li><li>Terhubung ke monitor melalui antarmuka display yang sesuai.</li></ul></article>
+                        <article id="hw-psu" class="card topic-section"><h4>7. PSU</h4><p>Power Supply Unit mengubah dan menyalurkan daya listrik sesuai kebutuhan komponen komputer. PSU yang sesuai harus memiliki daya cukup dan konektor yang kompatibel.</p><div class="note-box"><strong>Praktik aman:</strong> jangan membuka PSU yang masih tersambung listrik. Untuk pemeriksaan internal, ikuti prosedur keselamatan dan lakukan dengan pengawasan yang kompeten.</div></article>
+                        <article id="hw-io" class="card topic-section"><h4>8. Perangkat Input dan Output</h4><p>Perangkat input memasukkan data atau perintah, sedangkan perangkat output menyajikan hasil pemrosesan.</p><table class="info-table"><tr><th>Jenis</th><th>Contoh</th><th>Fungsi</th></tr><tr><td>Input</td><td>Keyboard, mouse, scanner, microphone.</td><td>Memasukkan data/perintah.</td></tr><tr><td>Output</td><td>Monitor, printer, speaker.</td><td>Menyajikan hasil pemrosesan.</td></tr><tr><td>Input/Output</td><td>Touchscreen, storage eksternal.</td><td>Dapat menerima dan/atau mengirim data.</td></tr></table></article>
+                        <article id="hw-care" class="card topic-section"><h4>9. Perawatan Hardware</h4><ol><li>Matikan perangkat sesuai prosedur sebelum membersihkan bagian internal.</li><li>Jaga ventilasi dan hindari penumpukan debu berlebihan.</li><li>Gunakan kabel dan adaptor yang sesuai spesifikasi.</li><li>Hindari cairan masuk ke perangkat.</li><li>Lakukan backup data sebelum pekerjaan berisiko terhadap penyimpanan.</li><li>Catat perubahan komponen agar troubleshooting berikutnya lebih mudah.</li></ol></article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SOFTWARE PAGE -->
+            <section id="page-software" class="page">
+                <div class="page-heading"><div><p class="eyebrow">Modul 02 & 03</p><h2>Software & Sistem Operasi</h2><p>Memahami jenis software dan bagaimana sistem operasi mengelola hardware serta aplikasi.</p></div><button class="btn primary" id="completeSoftware">Tandai Selesai</button></div>
+                <div class="grid grid-2">
+                    <article class="card topic-section"><h4>1. Pengertian Software</h4><p>Software adalah kumpulan instruksi, program, konfigurasi, dan data yang membuat komputer melakukan tugas tertentu.</p><h4>Jenis software</h4><ul><li><strong>System software:</strong> sistem operasi dan komponen pendukung sistem.</li><li><strong>Application software:</strong> browser, editor, office, multimedia, dan aplikasi produktivitas.</li><li><strong>Utility:</strong> alat pemeliharaan seperti backup, disk management, dan monitoring.</li><li><strong>Development tools:</strong> compiler, interpreter, editor, debugger, dan IDE.</li></ul></article>
+                    <article class="card topic-section"><h4>2. Sistem Operasi</h4><p>Sistem operasi menjadi penghubung antara pengguna, aplikasi, dan hardware. OS mengelola sumber daya serta menyediakan layanan dasar bagi aplikasi.</p><ul><li>Manajemen proses dan thread.</li><li>Manajemen memori.</li><li>Manajemen file dan storage.</li><li>Manajemen device dan driver.</li><li>User account dan permission.</li><li>Networking dan service.</li></ul></article>
+                    <article class="card topic-section"><h4>3. Booting</h4><p>Booting adalah proses ketika komputer mulai berjalan dan mempersiapkan sistem operasi untuk digunakan.</p><ol><li>Power on atau reset.</li><li>Firmware melakukan inisialisasi hardware.</li><li>Perangkat boot dipilih sesuai konfigurasi.</li><li>Bootloader dimuat.</li><li>Kernel sistem operasi dijalankan.</li><li>Service dan antarmuka pengguna dipersiapkan.</li></ol></article>
+                    <article class="card topic-section"><h4>4. Driver</h4><p>Driver adalah software yang membantu sistem operasi berkomunikasi dengan hardware tertentu. Contohnya driver jaringan, audio, graphics, dan printer.</p><div class="note-box"><strong>Tips troubleshooting:</strong> jika perangkat tidak bekerja normal, periksa koneksi fisik, status device, driver, dan pengaturan sistem sebelum mengganti komponen.</div></article>
+                    <article class="card topic-section"><h4>5. File System</h4><p>File system mengatur bagaimana file dan folder disimpan serta ditemukan pada media penyimpanan.</p><table class="info-table"><tr><th>Konsep</th><th>Penjelasan</th></tr><tr><td>File</td><td>Kumpulan data yang diberi nama dan metadata.</td></tr><tr><td>Folder/Directory</td><td>Struktur untuk mengelompokkan file dan folder lain.</td></tr><tr><td>Path</td><td>Lokasi file atau folder dalam struktur penyimpanan.</td></tr><tr><td>Permission</td><td>Aturan yang menentukan siapa yang boleh melakukan tindakan tertentu.</td></tr></table></article>
+                    <article class="card topic-section"><h4>6. Maintenance Software</h4><ul><li>Lakukan update sistem dan aplikasi dari sumber tepercaya.</li><li>Hapus aplikasi yang tidak diperlukan.</li><li>Kelola ruang penyimpanan.</li><li>Gunakan backup untuk file penting.</li><li>Gunakan proteksi keamanan dan lakukan pemindaian sesuai kebutuhan.</li><li>Dokumentasikan error dan perubahan konfigurasi.</li></ul></article>
+                </div>
+                <div class="card topic-section" style="margin-top:18px;"><h4>Contoh perintah dasar jaringan pada terminal</h4><p>Perintah dapat berbeda tergantung sistem operasi. Gunakan sesuai kebutuhan dan pahami hasilnya sebelum menjalankan perintah administrasi.</p><div class="code-box">ipconfig
+ipconfig /all
+ping 8.8.8.8
+tracert example.com
+nslookup example.com</div></div>
+            </section>
+
+            <!-- NETWORK PAGE -->
+            <section id="page-network" class="page">
+                <div class="page-heading"><div><p class="eyebrow">Modul 04</p><h2>Networking Dasar</h2><p>Fondasi jaringan komputer untuk memahami konektivitas, perangkat, alamat, dan troubleshooting.</p></div><button class="btn primary" id="completeNetwork">Tandai Selesai</button></div>
+                <div class="grid grid-2">
+                    <article class="card topic-section"><h4>1. Apa itu jaringan komputer?</h4><p>Jaringan komputer adalah sekumpulan perangkat yang saling terhubung agar dapat bertukar data dan menggunakan sumber daya tertentu.</p><ul><li><strong>LAN:</strong> jaringan area lokal seperti lab sekolah.</li><li><strong>WAN:</strong> jaringan yang mencakup area geografis lebih luas.</li><li><strong>Internet:</strong> jaringan global yang menghubungkan banyak jaringan.</li></ul></article>
+                    <article class="card topic-section"><h4>2. Perangkat jaringan</h4><ul><li><strong>Switch:</strong> menghubungkan perangkat dalam jaringan lokal.</li><li><strong>Router:</strong> menghubungkan jaringan berbeda dan menentukan rute paket.</li><li><strong>Access Point:</strong> menyediakan konektivitas wireless ke jaringan.</li><li><strong>Modem/ONT:</strong> menjadi bagian dari akses ke jaringan provider sesuai teknologi layanan.</li><li><strong>NIC:</strong> antarmuka jaringan pada komputer atau perangkat.</li></ul></article>
+                    <article class="card topic-section"><h4>3. IP Address</h4><p>IP address adalah alamat logis yang digunakan untuk mengidentifikasi interface/perangkat pada jaringan IP.</p><p>Contoh IPv4: <strong>192.168.1.10</strong>. IPv4 menggunakan 32 bit dan biasanya ditulis dalam empat kelompok angka desimal.</p><table class="info-table"><tr><th>Istilah</th><th>Makna</th></tr><tr><td>IP address</td><td>Alamat logis pada jaringan IP.</td></tr><tr><td>Subnet mask</td><td>Membantu menentukan bagian network dan host pada IPv4.</td></tr><tr><td>Gateway</td><td>Alamat perangkat yang digunakan sebagai jalur menuju jaringan lain.</td></tr><tr><td>DNS</td><td>Layanan yang menerjemahkan nama domain menjadi alamat IP dan sebaliknya sesuai jenis record.</td></tr></table></article>
+                    <article class="card topic-section"><h4>4. MAC Address</h4><p>MAC address adalah alamat pada interface jaringan yang berada pada lapisan data link. Format penulisannya biasanya berupa kelompok nilai heksadesimal.</p><p>MAC address sering digunakan dalam proses komunikasi jaringan lokal dan dapat terlihat pada informasi adapter jaringan.</p></article>
+                    <article class="card topic-section"><h4>5. Topologi jaringan</h4><ul><li><strong>Star:</strong> perangkat terhubung ke perangkat pusat seperti switch.</li><li><strong>Bus:</strong> perangkat berbagi jalur utama.</li><li><strong>Ring:</strong> perangkat tersusun membentuk lingkaran.</li><li><strong>Mesh:</strong> memiliki banyak koneksi antarnode untuk redundansi.</li><li><strong>Hybrid:</strong> gabungan lebih dari satu bentuk topologi.</li></ul></article>
+                    <article class="card topic-section"><h4>6. Troubleshooting jaringan</h4><ol><li>Pastikan kabel, konektor, dan link indicator dalam kondisi baik.</li><li>Periksa status adapter jaringan.</li><li>Periksa konfigurasi IP.</li><li>Uji konektivitas dengan ping secara bertahap.</li><li>Periksa gateway dan DNS bila koneksi ke internet bermasalah.</li><li>Dokumentasikan hasil pengujian agar masalah mudah dilacak.</li></ol></article>
+                </div>
+            </section>
+
+            <!-- QUIZ PAGE -->
+            <section id="page-quiz" class="page">
+                <div class="page-heading"><div><p class="eyebrow">Latihan</p><h2>Kuis Dasar TJKT</h2><p>Uji pemahaman kamu dari materi hardware, software, dan jaringan.</p></div></div>
+                <div id="quizContainer" class="quiz-shell"></div>
+            </section>
+
+            <!-- GLOSSARY PAGE -->
+            <section id="page-glossary" class="page">
+                <div class="page-heading"><div><p class="eyebrow">Referensi Cepat</p><h2>Glosarium TJKT</h2><p>Cari istilah teknis yang sering muncul dalam pembelajaran komputer dan jaringan.</p></div></div>
+                <div class="glossary-toolbar"><input id="glossarySearch" placeholder="Cari istilah seperti CPU, RAM, IP..."/><button class="btn soft" id="clearGlossary">Reset</button></div>
+                <div id="termGrid" class="term-grid"></div>
+            </section>
+
+            <!-- PROGRESS PAGE -->
+            <section id="page-progress" class="page">
+                <div class="page-heading"><div><p class="eyebrow">Perkembangan</p><h2>Progress Belajar</h2><p>Lihat modul yang sudah kamu tandai selesai dan hasil kuis terakhir.</p></div></div>
+                <div class="card progress-hero"><div class="progress-big"><div><span>Progress keseluruhan</span><strong id="progressPercent">0%</strong></div><div style="text-align:right"><span id="progressCount">0 dari 3 modul inti</span></div></div><div class="progress-track" style="margin-top:18px"><div id="progressBar" class="progress-bar" style="width:0%"></div></div></div>
+                <div class="grid grid-3">
+                    <div class="card progress-course"><div class="progress-course-row"><strong>Hardware</strong><span id="statusHardware">Belum selesai</span></div><div class="progress-track"><div id="barHardware" class="progress-bar" style="width:0%"></div></div></div>
+                    <div class="card progress-course"><div class="progress-course-row"><strong>Software</strong><span id="statusSoftware">Belum selesai</span></div><div class="progress-track"><div id="barSoftware" class="progress-bar" style="width:0%"></div></div></div>
+                    <div class="card progress-course"><div class="progress-course-row"><strong>Networking</strong><span id="statusNetwork">Belum selesai</span></div><div class="progress-track"><div id="barNetwork" class="progress-bar" style="width:0%"></div></div></div>
+                </div>
+                <div class="card card-pad" style="margin-top:18px;"><h3 class="section-title">Kuis Terakhir</h3><p id="lastQuizText" class="muted" style="font-size:13px;">Belum ada hasil kuis.</p></div>
+                <div style="margin-top:18px;"><button class="btn danger" id="resetProgress">Reset Progress</button></div>
+            </section>
+
+            <!-- ABOUT PAGE -->
+            <section id="page-about" class="page">
+                <div class="school-banner"><p class="eyebrow" style="color:#a9d2ff;">Profil Pembelajaran</p><h2>SMK Negeri 1 Cibinong</h2><p>Aplikasi pembelajaran ini dirancang sebagai media pendamping untuk siswa Program Keahlian Teknik Jaringan Komputer dan Telekomunikasi.</p></div>
+                <div class="grid grid-2">
+                    <div class="card card-pad"><h3 class="section-title">Tentang Aplikasi</h3><p class="muted" style="font-size:13px;">TJKT Learning Hub adalah contoh aplikasi web edukasi yang berfokus pada materi dasar program keahlian. Kontennya disusun agar mudah dipahami oleh siswa yang baru mulai mengenal hardware, software, dan networking.</p><div class="divider"></div><div class="profile-list"><div class="profile-row"><strong>Nama aplikasi</strong><span>TJKT Learning Hub</span></div><div class="profile-row"><strong>Sekolah</strong><span>SMK Negeri 1 Cibinong</span></div><div class="profile-row"><strong>Program</strong><span>Teknik Jaringan Komputer dan Telekomunikasi</span></div><div class="profile-row"><strong>Fokus</strong><span>Dasar hardware, software, OS, jaringan, keamanan, troubleshooting</span></div></div></div>
+                    <div class="card card-pad"><h3 class="section-title">Cara Menggunakan</h3><ol class="muted" style="font-size:13px;padding-left:20px;"><li>Masuk dengan akun demo yang tersedia.</li><li>Mulai dari Dashboard untuk melihat modul.</li><li>Baca materi Hardware, Software, dan Networking.</li><li>Tandai modul sebagai selesai setelah dipelajari.</li><li>Kerjakan kuis untuk mengukur pemahaman.</li><li>Gunakan Glosarium sebagai referensi istilah.</li></ol><div class="note-box"><strong>Catatan:</strong> aplikasi ini berjalan secara lokal di browser. Progress disimpan menggunakan localStorage pada perangkat/browser yang digunakan.</div></div>
+                </div>
+            </section>
+        </main>
+    </div>
+</section>
+
+<!-- ==============================================================
+     MODAL
+     ============================================================== -->
+<div id="infoModal" class="modal-backdrop hidden">
+    <div class="modal">
+        <div class="modal-header"><h3>Tentang TJKT Learning Hub</h3><button class="modal-close" id="closeModal">×</button></div>
+        <p class="muted" style="font-size:13px;">Aplikasi pembelajaran demo untuk membantu siswa memahami dasar-dasar Teknik Jaringan Komputer dan Telekomunikasi.</p>
+        <div class="divider"></div>
+        <ul class="muted" style="font-size:12px;padding-left:18px;"><li>Login lokal tanpa server.</li><li>Materi tersedia langsung di dalam halaman.</li><li>Progress tersimpan di browser.</li><li>Responsif untuk desktop dan mobile.</li></ul>
+        <button class="btn primary" id="modalOk">Mengerti</button>
+    </div>
+</div>
+<div id="toast" class="toast"></div>
+<div id="securityLockout" class="security-lockout hidden" aria-live="assertive">
+    <div class="security-lockout-card">
+        <div class="security-lockout-icon">!</div>
+        <h2>Security Lockout</h2>
+        <p>Multiple unsuccessful sign-in attempts were detected. This session is being terminated for security.</p>
+        <div id="securityCountdown" class="security-countdown">Terminating session…</div>
+    </div>
+</div>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
